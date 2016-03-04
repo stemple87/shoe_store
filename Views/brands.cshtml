@@ -1,6 +1,6 @@
 <h1>Shoe Brands</h1>
-<h4><a href="/brands/new">Add a new Shoe Brand</a></h4>
-<h4><a href="/">Return Home</a></h4>
+<h4><a href="/brands/new"><button type="button" name="button">Add a new Shoe Brand</button></a></h4>
+<h4><a href="/"><button type="button" name="button">Return Home</button></a></h4>
 <form action="/brands/delete" method="post">
   <input type="hidden" name="_method" value="DELETE">
  <button type="submit" name="button">Delete all Shoe Brands</button>
@@ -11,7 +11,7 @@
   <ul>
     @foreach (var brand in Model)
     {
-      <li><a href="/brands/@brand.GetId()">@brand.GetBrandName()</a></li>
+      <li><a href="/brands/@brand.GetId()">@brand.GetBrandName()</a> | | <a href="/brands/edit/@brand.GetId()"><button type="button" name="button">Edit</button></a> | <a href="/brands/delete/@brand.GetId()"><button type="button" name="button">Delete</button></a></li>
     }
   </ul>
 }

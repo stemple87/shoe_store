@@ -1,0 +1,15 @@
+<h1>Edit @Model.GetBrandName()</h1>
+<h4>
+  <a href="/brands"><button type="button" name="button">Return Home</button></a>
+  <br>
+  <br>
+  <a href="/brands"><button type="button" name="button">Return To Brands Page</button></a>
+</h4>
+<hr />
+<form action="/brands/edit/@Model.GetId()" method="post">
+  <input type="hidden" name="_method" value="PATCH">
+  <input name="brand-id" type="hidden" value="@Model.GetId()">
+  <label for="brand-name">Name</label>
+  <input id="brand-name" name="brand-name" type="text">
+  <button type="submit">Submit</button>
+</form>

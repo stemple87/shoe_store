@@ -1,7 +1,7 @@
 <h1>Shoe Stores</h1>
 
-<h4><a href="/stores/new">Add a new Shoe store</a></h4>
-<h4><a href="/">Return Home</a></h4>
+<h4><a href="/stores/new"><button type="button" name="button">Add a new Shoe Store</button></a></h4>
+<h4><a href="/"><button type="button" name="button">Return Home</button></a></h4>
 <form action="/stores/delete" method="post">
   <input type="hidden" name="_method" value="DELETE">
  <button type="submit" name="button">Delete all Shoe Stores</button>
@@ -12,7 +12,7 @@
   <ul>
     @foreach (var store in Model)
     {
-      <li><a href="/stores/@store.GetId()">@store.GetStoreName()</a> | <a href="/stores/edit/@store.GetId()">Edit</a></li>
+      <li><a href="/stores/@store.GetId()">@store.GetStoreName()</a> | <a href="/stores/edit/@store.GetId()"><button type="button" name="button">Edit</button></a> | <a href="/stores/delete/@store.GetId()"><button type="button" name="button">Delete</button></a></li>
     }
   </ul>
 }

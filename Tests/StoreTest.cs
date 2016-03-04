@@ -180,6 +180,28 @@ namespace ShoeStore
       Assert.Equal(newName, result);
     }
 
+    [Fact]
+    public void Test_Delete_DeletesStoreFromDatabase()
+    {
+      //Arrange
+      string name1 = "Foot Locker";
+      Store testStore1 = new Store(name1);
+      testStore1.Save();
+
+      string name2 = "Bob's shoes";
+      Store testStore2 = new Store(name2);
+      testStore2.Save();
+
+      //Act
+      testStore1.Delete();
+      List<Store> resultStores = Store.GetAll();
+      List<Store> testStoreList = new List<Store> {testStore2};
+
+
+      //Assert
+      Assert.Equal(testStoreList, resultStores);
+    }
+
     public void Dispose()
     {
       Store.DeleteAll();
