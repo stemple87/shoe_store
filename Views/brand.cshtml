@@ -1,5 +1,23 @@
-<h1>Shoe Brands</h1>
-<h2>Brand: @Model["brand"].GetBrandName()</h2>
+<h1>Brand: @Model["brand"].GetBrandName()</h1>
+<h4>
+  <a href="/">Return to Main Page</a>
+  <br>
+  <br>
+  <a href="/brands">Return to Shoe Brands Page</a>
+</h4>
+<hr />
+<h4>Add a store to this brand:</h4>
+<form action='/brand/add_store' method='post'>
+  <input id='brand-id' name='brand-id' type='hidden' value='@Model["brand"].GetId()'>
+  <label for='store-id'>Select a store</label>
+  <select id='store-id' name='store-id' type='text'>
+    @foreach (var store in @Model["allStores"])
+    {
+      <option value='@store.GetId()'>@store.GetStoreName()</option>
+    }
+  </select>
+  <button type='submit'>Add</button>
+</form>
 <hr />
 @if (@Model["brandStores"].Count != 0)
 {
@@ -15,16 +33,3 @@ else
 {
   <h4>No stores have been added for this brand</h4>
 }
-<h4>Add a store to this brand:</h4>
-<form action='/brand/add_store' method='post'>
-  <input id='brand-id' name='brand-id' type='hidden' value='@Model["brand"].GetId()'>
-  <label for='store-id'>Select a store</label>
-  <select id='store-id' name='store-id' type='text'>
-    @foreach (var store in @Model["allStores"])
-    {
-      <option value='@store.GetId()'>@store.GetStoreName()</option>
-    }
-  </select>
-  <button type='submit'>Add</button>
-</form>
-<p><a href="/">Return to Main Page</a></p>

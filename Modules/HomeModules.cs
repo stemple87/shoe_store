@@ -79,6 +79,17 @@ namespace ShoeStore
         return View["success.cshtml"];
       };
 
+      Delete["/brands/delete"] = _ => {
+        Brand.DeleteAll();
+        return View["success.cshtml"];
+      };
+
+      Delete["/stores/delete"] = _ => {
+        Store.DeleteAll();
+        return View["success.cshtml"];
+      };
+
+
     }
   }
 }
