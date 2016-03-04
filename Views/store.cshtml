@@ -1,0 +1,26 @@
+<h1>To Do List</h1>
+<h2>Store: @Model["store"].GetStoreName()</h2>
+<hr />
+@if (@Model["storeBrands"].Count != 0)
+{
+  <h4>Here are all the brands in this store:</h4>
+  <ul>
+    @foreach (var brand in @Model["storeBrands"])
+    {
+      <li>@brand.GetDescription()</li>
+    }
+  </ul>
+}
+<h4>Add a brand to this store:</h4>
+<form action='/store/add_brand' method='post'>
+  <input id='store-id' name='store-id' type='hidden' value='@Model["store"].GetId()'>
+  <label for='brand-id'>Select a brand</label>
+  <select id='brand-id' name='brand-id' type='text'>
+    @foreach (var brand in @Model["allBrands"])
+    {
+      <option value='@brand.GetId()'>@brand.GetBrandName()</option>
+    }
+  </select>
+  <button type='submit'>Add</button>
+</form>
+<p><a href="/">Return to Main Page</a></p>

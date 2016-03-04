@@ -236,6 +236,29 @@ namespace ShoeStore
        }
      }
 
+     public void AddStore(Store newStore)
+     {
+       SqlConnection conn = DB.Connection();
+       conn.Open();
+
+       SqlCommand cmd = new SqlCommand("INSERT INTO store_brand (brand_id, store_id) VALUES (@BrandId, @StoreId)", conn);
+       SqlParameter storeIdParameter = new SqlParameter();
+       storeIdParameter.ParameterName = "@StoreId";
+       storeIdParameter.Value = newStore.GetId();
+       cmd.Parameters.Add(storeIdParameter);
+
+       SqlParameter brandIdParameter = new SqlParameter();
+       brandIdParameter.ParameterName = "@StoreId";
+       brandIdParameter.Value = this.GetId();
+       cmd.Parameters.Add(brandIdParameter);
+
+       cmd.ExecuteNonQuery();
+
+       if (conn != null)
+       {
+         conn.Close();
+       }
+     }
     public override int GetHashCode()
     {
       return 0;

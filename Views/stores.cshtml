@@ -1,0 +1,22 @@
+<h1>Shoe Stores</h1>
+<hr />
+<h4><a href="/stores/new">Add a new Shoe store</a></h4>
+<h4><a href="/">Return Home</a></h4>
+<form action="/stores/delete" method="post">
+  <input type="hidden" name="_method" value="DELETE">
+ <button type="submit" name="button">Delete all Shoe Stores</button>
+</form>
+<hr />
+@if (Model != null)
+{
+  <ul>
+    @foreach (var store in Model)
+    {
+      <li><a href="/stores/@store.GetId()">@store.GetStoreName()</a></li>
+    }
+  </ul>
+}
+else
+{
+  <h3>No stores have been added yet</h3>
+}

@@ -41,7 +41,7 @@ namespace ShoeStore
     {
       return _storeName;
     }
-    public void SetName(string newName)
+    public void SetStoreName(string newName)
     {
       _storeName = newName;
     }
