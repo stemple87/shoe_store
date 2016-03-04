@@ -15,6 +15,10 @@
     }
   </ul>
 }
+else
+{
+  <h4>No brands have been added for this store</h4>
+}
 <h4>Add a brand to this store:</h4>
 <form action='/store/add_brand' method='post'>
   <input id='store-id' name='store-id' type='hidden' value='@Model["store"].GetId()'>

@@ -248,7 +248,7 @@ namespace ShoeStore
        cmd.Parameters.Add(storeIdParameter);
 
        SqlParameter brandIdParameter = new SqlParameter();
-       brandIdParameter.ParameterName = "@StoreId";
+       brandIdParameter.ParameterName = "@BrandId";
        brandIdParameter.Value = this.GetId();
        cmd.Parameters.Add(brandIdParameter);
 
