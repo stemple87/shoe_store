@@ -27,8 +27,8 @@ namespace ShoeStore
     public void Equal_ReturnsTrueForSameName()
     {
       //Arrange, Act
-      Brand firstBrand = new Brand("Life of the Past: Oregon");
-      Brand secondBrand = new Brand("Life of the Past: Oregon");
+      Brand firstBrand = new Brand("Nike");
+      Brand secondBrand = new Brand("Nike");
 
       //Assert
       Assert.Equal(firstBrand, secondBrand);
@@ -38,7 +38,7 @@ namespace ShoeStore
     public void Save_SavesBrandToDatabase()
     {
        //Arrange
-       Brand testBrand = new Brand("Linguistical Problem Solving Programs");
+       Brand testBrand = new Brand("Nike");
        testBrand.Save();
 
        //Act
@@ -53,7 +53,7 @@ namespace ShoeStore
     public void Save_AssignsIdToBrandObject()
     {
       //Arrange
-      Brand testBrand = new Brand("Enterin' SQL Commands");
+      Brand testBrand = new Brand("Nike");
       testBrand.Save();
 
       //Act
@@ -70,7 +70,7 @@ namespace ShoeStore
     public void Find_FindsBrandInDatabase()
     {
       //Arrange
-      Brand testBrand = new Brand("Screwin' Up Da'bases With Chris");
+      Brand testBrand = new Brand("Nike");
       testBrand.Save();
 
       //Act
@@ -85,7 +85,7 @@ namespace ShoeStore
     {
       List<Brand> resultBrands = Brand.GetAll();
       //Arrange
-      Brand testBrand = new Brand("Best Brand EVAH");
+      Brand testBrand = new Brand("Nike");
       testBrand.Save();
       testBrand.Delete();
 
@@ -99,11 +99,11 @@ namespace ShoeStore
     public void Delete_DeletesBrandBrandAndStoresFromDatabase()
     {
       //Arrange
-      Store testStore = new Store("Perilous Dungeons");
+      Store testStore = new Store("Foot Locker");
       testStore.Save();
 
 
-      Brand testBrand = new Brand("Wet doggie noses");
+      Brand testBrand = new Brand("Nike");
       testBrand.Save();
 
       //Act
@@ -122,13 +122,13 @@ namespace ShoeStore
     public void AddBrandStore_AddsStoreToBrand()
     {
       //Arrange
-      Brand testBrand = new Brand("David Copperfield");
+      Brand testBrand = new Brand("Nike");
       testBrand.Save();
 
-      Store testStore = new Store ("Harry Henderson");
+      Store testStore = new Store ("Foot Locker");
       testStore.Save();
 
-      Store testStore2 = new Store ("Sally Henderson");
+      Store testStore2 = new Store ("Foot Locker");
       testStore2.Save();
 
       //Act
@@ -145,14 +145,14 @@ namespace ShoeStore
     [Fact]
     public void GetStores_RetrievesAllStoresWithBrand()
     {
-      Brand testBrand = new Brand("How It Be");
+      Brand testBrand = new Brand("Nike");
       testBrand.Save();
 
-      Store firstStore = new Store("Pippi Longstocking");
+      Store firstStore = new Store("Foot Locker");
       firstStore.Save();
       testBrand.AddBrandStore(firstStore);
 
-      Store secondStore = new Store("Matilda");
+      Store secondStore = new Store("Other Place");
       secondStore.Save();
       testBrand.AddBrandStore(secondStore);
 

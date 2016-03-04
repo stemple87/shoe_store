@@ -27,8 +27,8 @@ namespace ShoeStore
     public void EqualOverrideTrueForSameDescription()
     {
       //Arrange, Act
-      Store firstStore = new Store("Bob Marley");
-      Store secondStore = new Store("Bob Marley");
+      Store firstStore = new Store("Foot Locker");
+      Store secondStore = new Store("Foot Locker");
 
       //Assert
       Assert.Equal(firstStore, secondStore);
@@ -38,7 +38,7 @@ namespace ShoeStore
     public void Save()
     {
       //Arrange
-      Store testStore = new Store("Peter Tosh");
+      Store testStore = new Store("Foot Locker");
       testStore.Save();
 
       //Act
@@ -53,7 +53,7 @@ namespace ShoeStore
     public void SaveAssignsIdToObject()
     {
       //Arrange
-      Store testStore = new Store("Bill Clinton");
+      Store testStore = new Store("Foot Locker");
       testStore.Save();
 
       //Act
@@ -70,7 +70,7 @@ namespace ShoeStore
     public void FindFindsStoreInDatabase()
     {
       //Arrange
-      Store testStore = new Store("Peter Griffin");
+      Store testStore = new Store("Foot Locker");
       testStore.Save();
 
       //Act
@@ -84,10 +84,10 @@ namespace ShoeStore
     public void AddBrand_AddsBrandToStore()
     {
       //Arrange
-      Brand testBrand = new Brand("Evening TV");
+      Brand testBrand = new Brand("Nike");
       testBrand.Save();
 
-      Store testStore = new Store("Brian Griffin");
+      Store testStore = new Store("Foot Locker");
       testStore.Save();
 
       //Act
@@ -104,13 +104,13 @@ namespace ShoeStore
     public void GetBrands_ReturnsAllStoreBrands()
     {
       //Arrange
-      Store testStore = new Store("Mr. Ed");
+      Store testStore = new Store("Foot Locker");
       testStore.Save();
 
-      Brand testBrand1 = new Brand("Mr. Magoo - Into the 22nd Century");
+      Brand testBrand1 = new Brand("Nike");
       testBrand1.Save();
 
-      Brand testBrand2 = new Brand("Dreaming With Genie");
+      Brand testBrand2 = new Brand("Adidas");
       testBrand2.Save();
 
       //Act
@@ -127,10 +127,10 @@ namespace ShoeStore
     public void Delete_DeletesStoreBrandStoresFromDatabase()
     {
       //Arrange
-      Brand testBrand = new Brand("Bees and their Stingers");
+      Brand testBrand = new Brand("Nike");
       testBrand.Save();
 
-      Store testStore = new Store("Farmer John");
+      Store testStore = new Store("Foot Locker");
       testStore.Save();
 
       //Act
