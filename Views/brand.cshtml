@@ -22,7 +22,7 @@ else
   <select id='store-id' name='store-id' type='text'>
     @foreach (var store in @Model["allStores"])
     {
-      <option value='@store.GetId()'>@store.GetName()</option>
+      <option value='@store.GetId()'>@store.GetStoreName()</option>
     }
   </select>
   <button type='submit'>Add</button>
