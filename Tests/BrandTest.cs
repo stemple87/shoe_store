@@ -4,7 +4,7 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace LibraryCatalog
+namespace ShoeStore
 {
   public class StoreTest : IDisposable
   {

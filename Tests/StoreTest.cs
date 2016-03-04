@@ -4,7 +4,7 @@ using System;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace LibraryCatalog
+namespace ShoeStore
 {
   public class BrandTest : IDisposable
   {
@@ -99,7 +99,7 @@ namespace LibraryCatalog
     public void Delete_DeletesBrandBrandAndStoresFromDatabase()
     {
       //Arrange
-      Store testStore = new Store("Perilous Dungeons", "sdlfk");
+      Store testStore = new Store("Perilous Dungeons");
       testStore.Save();
 
 
@@ -128,7 +128,7 @@ namespace LibraryCatalog
       Store testStore = new Store ("Harry Henderson");
       testStore.Save();
 
-      Store testStore2 = new Store ("Sally Henderson",);
+      Store testStore2 = new Store ("Sally Henderson");
       testStore2.Save();
 
       //Act
@@ -148,11 +148,11 @@ namespace LibraryCatalog
       Brand testBrand = new Brand("How It Be");
       testBrand.Save();
 
-      Store firstStore = new Store("Pippi Longstocking",);
+      Store firstStore = new Store("Pippi Longstocking");
       firstStore.Save();
       testBrand.AddBrandStore(firstStore);
 
-      Store secondStore = new Store("Matilda",);
+      Store secondStore = new Store("Matilda");
       secondStore.Save();
       testBrand.AddBrandStore(secondStore);
 

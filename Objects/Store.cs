@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System;
 
-namespace LibraryCatalog
+namespace ShoeStore
 {
   public class Store
   {
@@ -82,7 +82,7 @@ namespace LibraryCatalog
       SqlDataReader rdr;
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("INSERT INTO stores (firstname, lastname) OUTPUT INSERTED.id VALUES (@StoreName); INSERT INTO brand_store (store_id) OUTPUT INSERTED.id VALUES (@StoreId);", conn);
+      SqlCommand cmd = new SqlCommand("INSERT INTO stores (name) OUTPUT INSERTED.id VALUES (@StoreName); INSERT INTO store_brand (store_id) OUTPUT INSERTED.id VALUES (@StoreId);", conn);
 
       SqlParameter storeNameParam = new SqlParameter();
       storeNameParam.ParameterName = "@StoreName";
@@ -159,7 +159,7 @@ namespace LibraryCatalog
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("DELETE FROM stores WHERE id = @StoreId; DELETE FROM brand_store WHERE store_id = @StoreId;", conn);
+      SqlCommand cmd = new SqlCommand("DELETE FROM stores WHERE id = @StoreId; DELETE FROM store_brand WHERE store_id = @StoreId;", conn);
       SqlParameter storeIdParameter = new SqlParameter();
       storeIdParameter.ParameterName = "@StoreId";
       storeIdParameter.Value = this.GetId();
@@ -178,7 +178,7 @@ namespace LibraryCatalog
       SqlConnection conn = DB.Connection();
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("INSERT INTO brand_store (brand_id, store_id) VALUES (@BrandId, @StoreId)", conn);  //needs more stuff - brand relationship
+      SqlCommand cmd = new SqlCommand("INSERT INTO store_brand (brand_id, store_id) VALUES (@BrandId, @StoreId)", conn);  //needs more stuff - brand relationship
       SqlParameter brandIdParameter = new SqlParameter();
       brandIdParameter.ParameterName = "@BrandId";
       brandIdParameter.Value = newBrand.GetId();
@@ -203,7 +203,7 @@ namespace LibraryCatalog
       SqlDataReader rdr = null;
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("SELECT brands.* FROM stores JOIN brand_store ON (stores.id = brand_store.store_id) JOIN brands ON (brand_store.brand_id = brands.id) WHERE stores.id = @StoreId", conn);
+      SqlCommand cmd = new SqlCommand("SELECT brands.* FROM stores JOIN store_brand ON (stores.id = store_brand.store_id) JOIN brands ON (store_brand.brand_id = brands.id) WHERE stores.id = @StoreId", conn);
 
       SqlParameter storeIdParameter = new SqlParameter();
       storeIdParameter.ParameterName = "@StoreId";
@@ -215,14 +215,13 @@ namespace LibraryCatalog
       List<Brand> brands = new List<Brand> {};
       int brandId = 0;
       string brandTitle = null;
-      DateTime publishDate = new DateTime(2000, 1, 1);
+
 
       while (rdr.Read())
       {
         brandId = rdr.GetInt32(0);
         brandTitle = rdr.GetString(1);
-        publishDate = rdr.GetDateTime(2);
-        Brand brand = new Brand(brandTitle, publishDate, brandId);
+        Brand brand = new Brand(brandTitle, brandId);
         brands.Add(brand);
       }
       if (rdr != null)
