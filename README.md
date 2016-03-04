@@ -22,12 +22,12 @@ _This is an application that someone create a list of Shoe Stores and a list of 
 * CREATE TABLE store_brand (id int identity(1,1), store_id INT, brand_id INT)
 * GO
 * quit
-* Open Microsoft SQL Server Management studio
-* find database shoe_stores, right click, select Tasks, click backup.
-* right click shoe_stores, select Tasks, restore, database.
-* name database shoe_stores_test
+* Open Microsoft SQL Server Management studio.
+* Find database shoe_stores, right click, select Tasks, click backup.
+* Right click shoe_stores, select Tasks, restore, database.
+* Name database shoe_stores_test.
 
-
+* ----
 
 * Open windows power shell. Type 'cd Desktop' then 'git clone https://github.com/stemple87/shoe_store'
 * Open Microsoft SQL Server Management studio
