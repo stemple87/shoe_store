@@ -228,8 +228,45 @@ namespace ShoeStore
       {
         rdr.Close();
       }
-
       return brands;
     }
+
+    public void Update(string newName)
+    {
+      SqlConnection conn = DB.Connection();
+      SqlDataReader rdr;
+      conn.Open();
+
+      SqlCommand cmd = new SqlCommand("UPDATE stores SET name = @NewName OUTPUT INSERTED.name WHERE id = @storeId;", conn);
+
+      SqlParameter newNameParameter = new SqlParameter();
+      newNameParameter.ParameterName = "@NewName";
+      newNameParameter.Value = newName;
+      cmd.Parameters.Add(newNameParameter);
+
+
+      SqlParameter storeIdParameter = new SqlParameter();
+      storeIdParameter.ParameterName = "@storeId";
+      storeIdParameter.Value = this.GetId();
+      cmd.Parameters.Add(storeIdParameter);
+      rdr = cmd.ExecuteReader();
+
+      while(rdr.Read())
+      {
+        this._storeName = rdr.GetString(0);
+      }
+
+      if (rdr != null)
+      {
+        rdr.Close();
+      }
+
+      if (conn != null)
+      {
+        conn.Close();
+      }
+    }
+
+
   }
 }

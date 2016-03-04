@@ -162,6 +162,24 @@ namespace ShoeStore
       Assert.Equal(testStoreList, resultStoreList);
     }
 
+    [Fact]
+    public void Test_Update_UpdatesStoreInDatabase()
+    {
+      //Arrange
+      string name = "Home stuff";
+      Store testStore = new Store(name);
+      testStore.Save();
+      string newName = "Work stuff";
+
+      //Act
+      testStore.Update(newName);
+
+      string result = testStore.GetStoreName();
+
+      //Assert
+      Assert.Equal(newName, result);
+    }
+
     public void Dispose()
     {
       Store.DeleteAll();

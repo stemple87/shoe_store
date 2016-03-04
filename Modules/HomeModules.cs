@@ -89,6 +89,17 @@ namespace ShoeStore
         return View["success.cshtml"];
       };
 
+      Get["/stores/edit/{id}"] = parameters => {
+        Store SelectedStore = Store.Find(parameters.id);
+        return View["store_edit.cshtml", SelectedStore];
+      };
+
+      Patch["/stores/edit/{id}"] = parameters => {
+        Store SelectedStore = Store.Find(parameters.id);
+        SelectedStore.Update(Request.Form["store-name"]);
+        return View["success.cshtml"];
+      };
+
 
     }
   }
