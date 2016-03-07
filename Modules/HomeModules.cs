@@ -33,13 +33,15 @@ namespace ShoeStore
       Post["brands/new"] = _ => {
         Brand newBrand = new Brand(Request.Form["name"]);
         newBrand.Save();
-        return View["success.cshtml", Brand.GetAll()];
+        List<Brand> AllBrands = Brand.GetAll();
+        return View["brands.cshtml", AllBrands];
       };
 
       Post["stores/new"] = _ => {
         Store newStore = new Store(Request.Form["name"]);
         newStore.Save();
-        return View["success.cshtml", Store.GetAll()];
+        List<Store> AllStores = Store.GetAll();
+        return View["stores.cshtml", AllStores];
       };
 
 
@@ -81,12 +83,14 @@ namespace ShoeStore
 
       Delete["/brands/delete"] = _ => {
         Brand.DeleteAll();
-        return View["success.cshtml"];
+        List<Brand> AllBrands = Brand.GetAll();
+        return View["brands.cshtml", AllBrands];
       };
 
       Delete["/stores/delete"] = _ => {
         Store.DeleteAll();
-        return View["success.cshtml"];
+        List<Store> AllStores = Store.GetAll();
+        return View["stores.cshtml", AllStores];
       };
 
       Get["/stores/edit/{id}"] = parameters => {
@@ -97,7 +101,8 @@ namespace ShoeStore
       Patch["/stores/edit/{id}"] = parameters => {
         Store SelectedStore = Store.Find(parameters.id);
         SelectedStore.Update(Request.Form["store-name"]);
-        return View["success.cshtml"];
+        List<Store> AllStores = Store.GetAll();
+        return View["stores.cshtml", AllStores];
       };
 
       Get["stores/delete/{id}"] = parameters => {
@@ -107,7 +112,8 @@ namespace ShoeStore
       Delete["stores/delete/{id}"] = parameters => {
         Store SelectedStore = Store.Find(parameters.id);
         SelectedStore.Delete();
-        return View["success.cshtml"];
+        List<Store> AllStores = Store.GetAll();
+        return View["stores.cshtml", AllStores];
       };
 
       Get["/brands/edit/{id}"] = parameters => {
@@ -118,7 +124,8 @@ namespace ShoeStore
       Patch["/brands/edit/{id}"] = parameters => {
         Brand SelectedBrand = Brand.Find(parameters.id);
         SelectedBrand.Update(Request.Form["brand-name"]);
-        return View["success.cshtml"];
+        List<Brand> AllBrands = Brand.GetAll();
+        return View["brands.cshtml", AllBrands];
       };
 
       Get["brands/delete/{id}"] = parameters => {
@@ -128,7 +135,8 @@ namespace ShoeStore
       Delete["brands/delete/{id}"] = parameters => {
         Brand SelectedBrand = Brand.Find(parameters.id);
         SelectedBrand.Delete();
-        return View["success.cshtml"];
+        List<Brand> AllBrands = Brand.GetAll();
+        return View["brands.cshtml", AllBrands];
       };
 
 

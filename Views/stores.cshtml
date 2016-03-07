@@ -12,7 +12,10 @@
   <ul>
     @foreach (var store in Model)
     {
-      <li><a href="/stores/@store.GetId()">@store.GetStoreName()</a> | <a href="/stores/edit/@store.GetId()"><button type="button" name="button">Edit</button></a> | <a href="/stores/delete/@store.GetId()"><button type="button" name="button">Delete</button></a></li>
+      <li><a href="/stores/@store.GetId()">@store.GetStoreName()</a> | <a href="/stores/edit/@store.GetId()"><button type="button" name="button">Edit</button></a> | <form action="/stores/delete/@store.GetId()" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <button type="submit">Delete</button>
+      </form></li>
     }
   </ul>
 }

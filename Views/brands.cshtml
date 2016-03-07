@@ -11,7 +11,10 @@
   <ul>
     @foreach (var brand in Model)
     {
-      <li><a href="/brands/@brand.GetId()">@brand.GetBrandName()</a> | | <a href="/brands/edit/@brand.GetId()"><button type="button" name="button">Edit</button></a> | <a href="/brands/delete/@brand.GetId()"><button type="button" name="button">Delete</button></a></li>
+      <li><a href="/brands/@brand.GetId()">@brand.GetBrandName()</a> | | <a href="/brands/edit/@brand.GetId()"><button type="button" name="button">Edit</button></a> | <form action="/brands/delete/@brand.GetId()" method="post">
+        <input type="hidden" name="_method" value="DELETE">
+        <button type="submit">Delete</button>
+      </form></li>
     }
   </ul>
 }
