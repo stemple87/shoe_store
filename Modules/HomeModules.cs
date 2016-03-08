@@ -71,14 +71,16 @@ namespace ShoeStore
         Store store = Store.Find(Request.Form["store-id"]);
         Brand brand = Brand.Find(Request.Form["brand-id"]);
         brand.AddStore(store);
-        return View["success.cshtml"];
+        List<Brand> AllBrands = Brand.GetAll();
+        return View["brands.cshtml", AllBrands];
       };
 
       Post["store/add_brand"] = _ => {
         Store store = Store.Find(Request.Form["store-id"]);
         Brand brand = Brand.Find(Request.Form["brand-id"]);
         store.AddBrand(brand);
-        return View["success.cshtml"];
+        List<Store> AllStores = Store.GetAll();
+        return View["stores.cshtml", AllStores];
       };
 
       Delete["/brands/delete"] = _ => {
